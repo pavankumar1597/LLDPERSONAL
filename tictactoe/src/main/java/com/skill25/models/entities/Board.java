@@ -1,15 +1,12 @@
 package com.skill25.models.entities;
 
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.skill25.models.enums.CellState.EMPTY;
 
-@Getter
-@Setter
+
 public class Board {
     private String name ;
     private int size;
@@ -23,9 +20,35 @@ public class Board {
         for(int i = 0 ; i < size ;i++){
             ArrayList<Cell> rows = new ArrayList<>();
             for(int j = 0 ;j <size ; j++){
-                rows.add(Cell.builder().row(i).column(j).cellState(EMPTY).build());
+                rows.add(new Cell.Builder(i,j).cellState(EMPTY).build());
             }
             this.board.add(rows);
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public List<List<Cell>> getBoard() {
+        return board;
+    }
+
+    public void setBoard(List<List<Cell>> board) {
+        this.board = board;
     }
 }
